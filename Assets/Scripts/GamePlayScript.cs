@@ -1,7 +1,3 @@
-using System.Security.Cryptography;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.SceneTemplate;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +8,7 @@ public class GamePlayScript : MonoBehaviour
     [SerializeField] private static int levelPoints = 0;
     [SerializeField] private GameObject gameObj;
     [SerializeField] private GameObject busPrefab;
-    [SerializeField] private GameObject scoreText;
+    [SerializeField] private Text scoreText;
     
 
     private void Update()
@@ -33,6 +29,7 @@ public class GamePlayScript : MonoBehaviour
                     Destroy(gameObj);
                     busCounter++;
                     levelPoints += clickCounter;
+                    scoreText.text = "SCORE : " + levelPoints;
                     clickCounter = 0;
                     Instantiate(busPrefab, new Vector3(0, 1, 1), Quaternion.identity);
                 }
@@ -46,6 +43,7 @@ public class GamePlayScript : MonoBehaviour
                     Destroy(gameObj);
                     busCounter++;
                     levelPoints += clickCounter;
+                    scoreText.text = "SCORE : " + levelPoints;
                     clickCounter = 0;
                     Instantiate(busPrefab, new Vector3(0, 1, 1), Quaternion.identity);
                 }
