@@ -28,6 +28,12 @@ public class GamePlayScript : MonoBehaviour
                 decimalHealth += 1 * Time.deltaTime;
                 clickCounter = Mathf.RoundToInt(decimalHealth);
                 Debug.Log(clickCounter);
+                if (clickCounter == 30)
+                {
+                    Destroy(gameObj);
+                    busCounter++;
+                    clickCounter = 0;
+                }
             }
             if (Input.GetMouseButtonUp(0) && clickCounter < 10)
             {
@@ -36,7 +42,6 @@ public class GamePlayScript : MonoBehaviour
                 busCounter++;
                 scoreText.text = "SCORE : " + levelPoints;
                 clickCounter = 0;
-                decimalHealth = 0.0f;
                 Instantiate(busPrefab, new Vector3(0, 1, 1), Quaternion.identity);
             }
             else if (Input.GetMouseButtonUp(0) && clickCounter > 10)
